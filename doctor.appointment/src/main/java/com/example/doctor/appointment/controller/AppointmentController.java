@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,13 +27,14 @@ public class AppointmentController {
 	@Autowired
 	AppointmentService appointmentService;
 
-	
+	@CrossOrigin
 	@GetMapping("/view-appointments")
 	@ResponseBody //The @ResponseBody annotation tells a controller that the object returned is automatically serialized into JSON and passed back into the HttpResponse object.
 	private List<Appointment> viewAppointmentsByDoctorId(@RequestParam String responsibleDoctorId) {
 		return appointmentService.viewAppointmentsByDoctorId(responsibleDoctorId);
 	}
 	
+	@CrossOrigin
 	@GetMapping("/view-appointments-by-doctor-and-date")
 	@ResponseBody
 	private List<Appointment> viewAppointmentsByDate(@RequestParam String responsibleDoctorId, @RequestParam String selectedDate) {
@@ -56,6 +58,7 @@ public class AppointmentController {
 
 	
 	//@SuppressWarnings("unchecked")
+	@CrossOrigin
 	@PostMapping("/create-appointment")
 	private ResponseEntity<String> createNewAppointment(@RequestBody Appointment newAppointment) {
 		try {
@@ -73,6 +76,7 @@ public class AppointmentController {
 	
 	
 	//@SuppressWarnings("unchecked")
+	@CrossOrigin
 	@PutMapping("/update-appointment")
 	private ResponseEntity<String> updateAppointment(@RequestBody Appointment appointment) {
 		try {
@@ -93,6 +97,7 @@ public class AppointmentController {
 //	}
 
 	@SuppressWarnings("unchecked")
+	@CrossOrigin
 	@DeleteMapping("/delete-appointment/{appointmentId}")
     public ResponseEntity<String> deleteAppointmentById(@PathVariable String appointmentId) {
         try {
@@ -109,17 +114,20 @@ public class AppointmentController {
 	
 	
 	@GetMapping("/get-doctors-list")
+	@CrossOrigin
 	@ResponseBody
 	private List<User> getDoctorsList() {
 		return appointmentService.getDoctorsList();
 	}
 	
 	
+	@CrossOrigin
 	@GetMapping("/notfound")
     ResponseEntity<String> notfound() {
         return ResponseEntity.notFound().build();
     }
 
+	@CrossOrigin
     @GetMapping("/badrequest")
     ResponseEntity<String> badRequest() {
         return ResponseEntity.badRequest().body("Bad request");

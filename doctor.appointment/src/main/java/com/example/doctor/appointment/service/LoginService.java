@@ -13,7 +13,7 @@ public class LoginService {
 	LoginDao loginDao;
 	
 	
-	public boolean login(String userId, String password) {
+	public User login(String userId, String password) {
 		return loginDao.login(userId, password);
 	}
 

@@ -18,8 +18,9 @@ public class LoginDaoImpl implements LoginDao{
 	 
 	 
 	@Override
-	public boolean login(String userId, String password) {
-		return loginRepository.validateUserIdPassword(userId, password)>0 ? true : false;
+	public User login(String userId, String password) {
+		//return loginRepository.validateUserIdPassword(userId, password)>0 ? true : false;
+		return loginRepository.validateUserIdPassword(userId, password);
 	}
 
 

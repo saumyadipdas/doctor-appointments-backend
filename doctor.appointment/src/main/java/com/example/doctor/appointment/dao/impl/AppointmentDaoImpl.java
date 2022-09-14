@@ -10,6 +10,7 @@ import com.example.doctor.appointment.dao.AppointmentDao;
 import com.example.doctor.appointment.domain.Appointment;
 import com.example.doctor.appointment.domain.User;
 import com.example.doctor.appointment.repository.AppointmentRepository;
+import com.example.doctor.appointment.repository.LoginRepository;
 
 @Repository
 @Transactional
@@ -17,6 +18,8 @@ public class AppointmentDaoImpl implements AppointmentDao{
 
 	@Autowired
 	AppointmentRepository appointmentRepository;
+	@Autowired
+	LoginRepository loginRepository;
 	
 	@Override
 	public List<Appointment> viewAppointmentsByDoctorId(String responsibleDoctorId) {
@@ -57,7 +60,7 @@ public class AppointmentDaoImpl implements AppointmentDao{
 	@Override
 	public List<User> getDoctorsList() {
 		// TODO Auto-generated method stub
-		return appointmentRepository.findDoctorLists();
+		return loginRepository.findDoctorLists();
 	}
 
 	

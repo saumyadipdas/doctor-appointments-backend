@@ -1,10 +1,12 @@
 package com.example.doctor.appointment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.doctor.appointment.domain.User;
@@ -24,8 +26,10 @@ public class LoginController {
 	 * @param password
 	 * @return
 	 */
+	@CrossOrigin
 	@GetMapping("/login")
-	private boolean login(@RequestParam String userId, @RequestParam String password) {
+	@ResponseBody
+	private User login(@RequestParam String userId, @RequestParam String password) {
 		return loginService.login(userId, password);
 	  }
 	

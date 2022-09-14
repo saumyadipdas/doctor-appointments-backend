@@ -14,7 +14,5 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Strin
 	@Query(value="select * from Appointment where RESPONSIBLE_DOCTOR_ID= :docId", nativeQuery=true)
 	List<Appointment> findAppointmentsByDoctorId(String docId);
 
-	@Query(value="select * from User where USER_TYPE = 'DOCTOR' ", nativeQuery=true)
-	List<User> findDoctorLists();
 
 }
