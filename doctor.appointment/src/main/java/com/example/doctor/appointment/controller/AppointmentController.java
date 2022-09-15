@@ -103,9 +103,9 @@ public class AppointmentController {
         try {
             String deletedAppointmentId = appointmentService.deleteById(appointmentId);
             if (deletedAppointmentId != null) {
-                return ResponseEntity.status(HttpStatus.OK).body("Successfully deleted the appointment with id: " +deletedAppointmentId);
+                return ResponseEntity.status(HttpStatus.OK).body("Successfully deleted the appointment with id: " +appointmentId);
             } else {
-                return (ResponseEntity<String>) ResponseEntity.status(HttpStatus.BAD_REQUEST);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Issue in deleting the Appointment!");
             }
          } catch (DataAccessException e) {
              return (ResponseEntity<String>) ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR);
